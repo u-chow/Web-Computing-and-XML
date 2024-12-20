@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XML Viewer</title>
+    <style>
+    body
+    {
+        font-size: 16px;
+        font-family: 'Times New Roman', Times, serif;
+        display: flex;
+        height: 100vh;
+        margin: 0;
+    }
+
+    #xmlInputContainer,
+    #xmlTreeContainer
+    {
+        font-size: 16px;
+        font-family: 'Times New Roman', Times, serif;
+        flex: 1;
+        padding: 20px;
+        width: 100%;
+        height: 90%;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        margin: 2px;
+        padding: 4px;
+    }
+
+
+    textarea
+    {
+        font-size: 16px;
+        font-family: 'Times New Roman', Times, serif;
+        width: 100%;
+        height: 100%;
+        border: none;
+        box-sizing: border-box;
+    }
+
+    #xmlTree
+    {
+        font-size: 16px;
+        font-family: 'Times New Roman', Times, serif;
+        overflow-y: auto;
+        max-height: 100%;
+    }
+
+    ul
+    {
+        font-size: 16px;
+        font-family: 'Times New Roman', Times, serif;
+        list-style-type: none;
+        padding-left: 20px;
+    }
+
+    li
+    {
+        font-size: 16px;
+        font-family: 'Times New Roman', Times, serif;
+        cursor: pointer;
+        user-select: none;
+    }
+
+    li > ul
+    {
+        font-size: 16px;
+        font-family: 'Times New Roman', Times, serif;
+        display: none;
+    }
+
+    li.expanded > ul
+    {
+        font-size: 16px;
+        font-family: 'Times New Roman', Times, serif;
+        display: block;
+    }
+    button
+    {
+        width: 100px;
+        height: 40px;
+        font-size: 16px;
+        color: black;
+        background-color: navajowhite;
+        border: none;
+        cursor: pointer;
+    }
+    button:hover
+    {
+        background-color: chocolate;
+    }
+    footer
+    {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        margin: 10px;
+    }
+    h2
+    {
+        font-size: 20px;
+        font-family: 'Times New Roman', Times, serif;
+        color:chocolate
+    }
+    </style>
+</head>
+<body>
+    <div id="xmlInputContainer">
+        <textarea id="xmlInput" rows="10" placeholder="Enter XML code(輸入XML代碼)"></textarea>
+        <br>
+        <br>
+        <button onclick="parseXml()" title="解析XML">Parse XML</button>
+    </div>
+    <div id="xmlTreeContainer">
+        <div id="xmlTree"></div>
+    </div>
+    <footer>
+        <h2>By Uchow</h2>
+    </footer>
+<script>
+    function parseXml()
+    {
+        const xmlCode = document.getElementById('xmlInput').value;
+        const xmlDoc = new DOMParser().parseFromString(xmlCode, 'application/xml');
+        const xmlTree = document.getElementById('xmlTree');
+        xmlTree.innerHTML = '';
+        const tree = buildTree(xmlDoc.documentElement);
+        xmlTree.appendChild(tree);
+        xmlTree.addEventListener('click', function (event)
+        {
+            if(event.target.tagName === 'LI')
+            {
+                event.target.classList.toggle('expanded');
+            }
+        });
+    }
+    function buildTree(node)
+    {
+        const ul = document.createElement('ul');
+        const li = document.createElement('li');
+        if(node.nodeType === 1)
+        {
+            li.textContent = node.nodeName;
+            li.classList.add('expanded');
+            if(node.attributes.length > 0)
+            {
+                const attrUl = document.createElement('ul');
+                for(let i = 0; i < node.attributes.length; i++)
+                {
+                    const attr = node.attributes[i];
+                    const attrLi = document.createElement('li');
+                    attrLi.textContent = `${attr.name} : ${attr.value}`;
+                    attrUl.appendChild(attrLi);
+                }
+                li.appendChild(attrUl);
+            }
+        }
+        else if(node.nodeType === 3 && node.nodeValue.trim() !== '')
+        {
+            li.textContent = node.nodeValue.trim();
+        }
+        if(node.hasChildNodes())
+        {
+            const childUl = document.createElement('ul');
+            for(let i = 0; i < node.childNodes.length; i++)
+            {
+                const child = node.childNodes[i];
+                const childNode = buildTree(child);
+                if(childNode)
+                {
+                    childUl.appendChild(childNode);
+                }
+            }
+            li.appendChild(childUl);
+        }
+        ul.appendChild(li);
+        return ul;
+    }
+    </script>
+</body>
+</html>
