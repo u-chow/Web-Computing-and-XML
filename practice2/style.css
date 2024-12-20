@@ -1,0 +1,123 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap");
+* {
+  font-family: "Noto Sans TC", sans-serif;
+  background-color: cornsilk;
+}
+
+html,
+body {
+  width: 100%;
+}
+
+ol {
+  list-style-type: upper-roman;
+}
+
+a {
+  color: chocolate;
+  text-decoration: none;
+}
+
+div.all {
+  display: flex;
+  justify-content: space-evenly;
+}
+div.all div.left {
+  background-color: #523629;
+  width: 50vw;
+  margin: 1rem;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+div.all div.left img {
+  width: 25%;
+}
+div.all div.right {
+  background-color: #523629;
+  width: 50vw;
+  margin: 1rem;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+div.all div.right img {
+  width: 25%;
+}
+
+div.google {
+  display: flex;
+  justify-content: center;
+}
+div.google div {
+  padding: 30px;
+  font-size: 3rem;
+  color: chocolate;
+}
+
+h5 {
+  font-size: 30px;
+}
+
+h6 {
+  font-size: 10px;
+}
+
+p {
+  font-size: 30px;
+}
+
+nav {
+  background-color: chocolate;
+}
+nav ul {
+  display: flex;
+  list-style: none;
+}
+nav ul a {
+  color: #523629;
+  padding: 10px;
+}
+
+main {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+main section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem;
+}
+
+@media screen and (max-width: 700px) {
+  main {
+    flex-direction: column;
+    align-items: center;
+  }
+  main section.left {
+    width: 85vw;
+  }
+  main section.right {
+    width: 85vw;
+  }
+}
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}/*# sourceMappingURL=style.css.map */
+
+@keyframes rotateChocolate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 將動畫應用於巧克力圖片 */
+#chocolateImage {
+  animation: rotateChocolate 100s linear infinite; /* 10s表示動畫耗時10秒，linear表示線性動畫，infinite表示無限循環 */
+}

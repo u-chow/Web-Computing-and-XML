@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>計算機</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+</head>
+
+<style>
+    .jumbotron
+    {
+        background-color: antiquewhite;
+    }
+    nav ul
+    {
+        display: flex;
+        list-style: none;
+    }
+    nav ul a
+    {
+        color: #523629;
+        padding: 10px;
+    }
+</style>
+
+<script>
+    function calculate()
+    {
+        var num1 = parseFloat(document.getElementById("num1").value);
+        var num2 = parseFloat(document.getElementById("num2").value);
+        var operation = document.getElementById("operation").value;
+
+        var result = 0;
+
+        if (operation === "+")
+        {
+            result = num1 + num2;
+            document.getElementById("ans").innerHTML = num1 + '+' + num2 +  '=' + result;
+        }
+        else if (operation === "-")
+        {
+            result = num1 - num2;
+            document.getElementById("ans").innerHTML = num1 + '-' + num2 +  '=' + result;
+        }
+        else if (operation === "x")
+        {
+            result = num1 * num2;
+            document.getElementById("ans").innerHTML = num1 + 'x' + num2 +  '=' + result;
+        }
+    }
+</script>
+
+<body>
+    <div class="jumbotron text-center">
+        <h1 id="ans"><b>計算機</b></h1>
+    </div>
+    <nav>
+        <ul>
+            <a target ="_self" href="home1.html" title="HOME"><li>首頁</li></a>
+            <a target ="_self" href="resume.html" title="RESUME"><li>履歷表</li></a>
+            <a target ="_self" href="game21.html" title="OTHER GAME"><li>其他遊戲</li></a>
+            <a target ="_self" href="game3.html" title="ENGLISH"><li>ENGLISH</li></a>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>計算機</h1>
+        <hr>
+        <label for="num1">數字1: </label>
+        <input type="number" id="num1" step="any">
+        <label for="operation">運算符號: </label>
+        <select id="operation">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="x">x</option>
+        </select>
+        <label for="num2">數字2: </label>
+        <input type="number" id="num2" step="any">
+        <button type="submit" style="color: chocolate" onclick="calculate()" title="Calculate">計算</button>
+    </div>
+</body>
+
+<footer style="position: absolute; bottom: 0; right: 0; background-color: antiquewhite; padding: 10px; text-align: right;">
+    <h2 style="color: chocolate">By Uchow</h2>
+</footer>
+
+</html>
