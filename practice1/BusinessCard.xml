@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<名片> 
+    <姓名>吳正己</姓名>
+    <職稱>
+        <職稱1>副校長</職稱1>
+        <職稱2>優聘教授</職稱2>
+    </職稱>
+    <中文校名藝術體 image="picture1.jpg">base 64 encode</中文校名藝術體>
+    <服務單位>
+        <學院>教育學院</學院>
+        <系所>資訊教育研究所</系所>
+    </服務單位> 
+    <郵遞區號>10610</郵遞區號>
+    <地址>台北市大安區和平東路一段162號</地址>
+    <Tel>02-1234-5678</Tel>
+    <Fax>02-1234-5679</Fax>
+    <Mobile>+886-912-345-678</Mobile>
+    <e-mail>president@ntnu.edu.tw</e-mail>
+    <校徽 image="picture2.jpg">base 64 encode</校徽>
+    <底部花邊 image="picture3.jpg">base 64 encode</底部花邊>
+</名片>
